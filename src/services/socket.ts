@@ -7,7 +7,7 @@ class SocketService {
 
   connect(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.socket = io(`http://${window.location.hostname}:3001`);
+      this.socket = io(`https://api-dotcube.onrender.com`);
 
       
       this.socket.on('connect', () => {
