@@ -9,12 +9,40 @@ const __dirname = dirname(__filename);
 
 const app = express();
 const server = createServer(app);
+
+
+// Enable CORS for your frontend domain
+app.use(cors({
+  origin: 'https://dotcube.netlify.app',
+  methods: ['GET', 'POST'],
+  credentials: true
+}));
+
+// Root route for test
+app.get('/', (req, res) => {
+  res.send("✅ API is running");
+});
+
+
+
 const io = new Server(server, {
   cors: {
-    origin: "*",
-    methods: ["GET", "POST"]
+    origin: 'https://dotcube.netlify.app',
+    methods: ['GET', 'POST'],
+    credentials: true
   }
 });
+
+
+io.on('connection', (socket) => {
+  console.log('✅ Client connected');
+  
+  socket.on('disconnect', () => {
+    console.log('🚫 Client disconnected');
+  });
+});
+
+
 
 // Game state management
 const gameRooms = new Map();
