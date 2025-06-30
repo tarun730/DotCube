@@ -131,11 +131,11 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           textAnchor="middle"
           dominantBaseline="middle"
           fill={owner.color}
-          fontSize={12}
+          fontSize={25}
           fontWeight="bold"
           pointerEvents="none"
         >
-          {owner.name}
+          {owner.name.charAt(0)}
         </text>
       </>
     );

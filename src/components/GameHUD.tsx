@@ -70,7 +70,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({ gameState, currentPlayerId }) 
               key={player.id}
               className={`bg-white/10 backdrop-blur-lg rounded-xl p-4 border transition-all duration-200 ${
                 isActive
-                  ? 'border-white/40 ring-2 ring-white/20'
+                  ? 'border-white/40 ring-2 ring-white/20 '
                   : isCurrentPlayer
                   ? 'border-blue-400/40'
                   : 'border-white/20'
@@ -79,15 +79,21 @@ export const GameHUD: React.FC<GameHUDProps> = ({ gameState, currentPlayerId }) 
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <div
-                    className={`w-4 h-4 rounded-full ${isActive ? 'animate-pulse' : ''}`}
+                    className={`w-4 h-4 rounded-full ${isActive ? 'animate-ping' : ''}`}
                     style={{ backgroundColor: player.color }}
                   />
                   <span className="text-white font-medium truncate">
                     {player.name}
                     {isCurrentPlayer && <span className="text-blue-300 ml-1">(You)</span>}
                   </span>
+                  
                 </div>
                 
+                <span className="text-white font-medium">
+                {currentPlayerData.id === currentPlayerId ? "Your turn!" : `${currentPlayerData.name}'s turn`}
+              </span>
+
+
                 {rank === 1 && status === 'finished' && (
                   <Crown className="w-5 h-5 text-yellow-400" />
                 )}
