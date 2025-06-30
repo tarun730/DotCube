@@ -89,9 +89,7 @@ export const GameHUD: React.FC<GameHUDProps> = ({ gameState, currentPlayerId }) 
                   
                 </div>
                 
-                <span className="text-white font-medium">
-                {currentPlayerData.id === currentPlayerId ? "Your turn!" : `${currentPlayerData.name}'s turn`}
-              </span>
+               
 
 
                 {rank === 1 && status === 'finished' && (
